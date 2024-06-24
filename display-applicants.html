@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Job Applicants</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+        }
+       .menu {
+            background-color: #d4d2d2;;
+            padding: 10px;
+            text-align: center;
+        }
+       .application-list {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+       .application-list table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+       .application-list th,.application-list td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+       .application-list th {
+            background-color: #f0f0f0;
+        }
+        .button {
+            background-color: #3e8e41;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;}
+          
+          .button:hover {
+            background-color: #3e8e41; }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <h1>Job Applicants</h1>
+    </div>
+    <div class="application-list">
+        <h2>Job Applications: </h2>
+        <table id="application-list">
+            <tr>
+                <th>Name</th>
+                <th>Job role</th>
+                <th>Company Name</th>
+                <th>Application Date</th>
+            </tr>
+
+        </table><br> <br>
+        <a href="home.html" class="button">Done</a>
+    </div>
+
+    <script>
+        const applicationList = document.getElementById('application-list');
+        const storedApplication = localStorage.getItem('jobApplication');
+        if (storedApplication) {
+            const application = JSON.parse(storedApplication);
+            const tableRow = document.createElement('tr');
+            tableRow.innerHTML = `
+                <td>${application.applicantName}</td>
+                <td>${application.jobTitle}</td>
+                <td>${application.companyName}</td>
+                <td>${application.applicationDate}</td>
+            `;
+            applicationList.appendChild(tableRow);
+        }
+    </script>
+    
+</body>
+</html>
+

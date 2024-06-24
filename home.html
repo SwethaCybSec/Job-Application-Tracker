@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Job Application</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .menu {
+            background-color: #d4d2d2;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .form {
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form1 {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+        }
+        .form1:focus {
+            border-color: #337ab7;
+        }
+        .submit{
+            background-color: #337ab7;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .submit:hover {
+            background-color: #23527c;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <h1>Job Application</h1>
+    </div>
+    <div class="form">
+        <h2>Enter Job Application Details</h2>
+        <form id="job-application-form">
+            <label for="applicant-name">Name:</label>
+            <input type="text" id="applicant-name" class="form1" required><br><br>
+            <label for="job-title">Job role:</label>
+            <input type="text" id="job-title" class="form1" required><br><br>
+            <label for="company-name">Company Name:</label>
+            <input type="text" id="company-name" class="form1" required><br><br>
+            <label for="application-date">Application Date:</label>
+            <input type="date" id="application-date" class="form1" required><br><br>
+            <input type="submit" value="Submit" class="submit">
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('job-application-form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const applicantName = document.getElementById('applicant-name').value;
+            const jobTitle = document.getElementById('job-title').value;
+            const companyName = document.getElementById('company-name').value;
+            const applicationDate = document.getElementById('application-date').value;
+            localStorage.setItem('jobApplication', JSON.stringify({
+                applicantName,
+                jobTitle,
+                companyName,
+                applicationDate,
+            }));
+            window.location.href = 'display-applicants.html';
+        });
+    </script>
+</body>
+</html>
